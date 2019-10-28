@@ -1,0 +1,36 @@
+﻿kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: reversew
+  namespace: default
+  selfLink: /apis/route.openshift.io/v1/namespaces/default/routes/reversew
+  uid: de3bd4ec-f676-11e9-893d-0a580a80003a
+  resourceVersion: '92257'
+  creationTimestamp: '2019-10-24T15:56:40Z'
+  labels:
+    app: reverse-words
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: reversew-default.apps.cluster-3c9d.3c9d.sandbox1284.opentlc.com
+  subdomain: ''
+  to:
+    kind: Service
+    name: reverse-words
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Allow
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: reversew-default.apps.cluster-3c9d.3c9d.sandbox1284.opentlc.com
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2019-10-24T15:56:40Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: apps.cluster-3c9d.3c9d.sandbox1284.opentlc.com
