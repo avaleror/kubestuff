@@ -30,3 +30,4 @@ curl http://127.0.0.1:8080/health -X GET
 ```sh
 curl -k reverse-default.apps.cluster-1234.example.com/health -X GET
 ```
+** This app comes from Mario Vazquez´s repo https://github.com/mvazquezc/reverse-words
