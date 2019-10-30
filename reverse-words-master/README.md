@@ -17,8 +17,16 @@ curl -k reverse-default.apps.cluster-1234.example.com -X POST -d '{"word":"PALC"
 curl http://127.0.0.1:8080/ -X GET
 ```
 
+```sh
+curl -k reverse-default.apps.cluster-1234.example.com -X GET
+```
+
 **Get Health**
 
 ```sh
 curl http://127.0.0.1:8080/health -X GET
+```
+
+```sh
+curl -k reverse-default.apps.cluster-1234.example.com/health -X GET
 ```
