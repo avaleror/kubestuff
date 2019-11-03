@@ -1,0 +1,29 @@
+---
+- name: Reverse-words in OpenShift (the access to the cluster has been using an ansible vault file)
+  hosts: localhost
+  connection: local
+
+  vars:
+    deployment: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/reverse-deploy.yaml"
+    service: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/reverse-service.yaml"
+    route: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/route-reverse.yaml"
+
+  vars_files:
+    - vars/kubeinfo.yml
+
+  tasks:
+
+  - name: Login in OpenShift host "{{ oc_host }}"
+    shell: oc login {{ kubehost }} -u {{ kubeuser }} -p {{ kubepass }} --insecure-skip-tls-verify
+    
+  - name: Remove reverse words route from file
+    shell: oc delete -f "{{ route }}"
+
+  - name: Remove reverse words service from file
+    shell: oc delete -f "{{ service }}"
+
+  - name: Remove reverse words deployment from file
+    shell: oc delete -f "{{ deployment }}"
+
+  - name: Logout OpenShift
+    shell: oc logout
