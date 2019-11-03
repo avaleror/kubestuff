@@ -6,7 +6,6 @@
   vars:
     deployment: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/reverse-deploy.yaml"
     service: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/reverse-service.yaml"
-    route: "https://raw.githubusercontent.com/avaleror/kubestuff/master/reverse-words-master/route-reverse.yaml"
 
   vars_files:
     - vars/kubeinfo.yml
@@ -21,9 +20,6 @@
 
   - name: Create reverse words service from file
     shell: oc create -f "{{ service }}"
-
-  - name: Create reverse words route from file
-    shell: oc create -f "{{ route }}"
 
   - name: Logout OpenShift
     shell: oc logout
